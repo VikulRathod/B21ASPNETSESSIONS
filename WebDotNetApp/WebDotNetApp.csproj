@@ -68,11 +68,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ControlsDemo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="Images\3.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlsDemo.aspx.cs">
+      <DependentUpon>ControlsDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControlsDemo.aspx.designer.cs">
+      <DependentUpon>ControlsDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
