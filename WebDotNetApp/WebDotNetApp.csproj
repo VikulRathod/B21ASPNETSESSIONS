@@ -70,9 +70,13 @@
   <ItemGroup>
     <Content Include="ControlsDemo.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="HeadingUserControl.ascx" />
     <Content Include="Home.aspx" />
     <Content Include="Images\3.jpg" />
+    <Content Include="Images\justlogo.png" />
     <Content Include="Login.aspx" />
+    <Content Include="NavLinksUserControl.ascx" />
+    <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +89,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HeadingUserControl.ascx.cs">
+      <DependentUpon>HeadingUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HeadingUserControl.ascx.designer.cs">
+      <DependentUpon>HeadingUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -100,7 +111,21 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NavLinksUserControl.ascx.cs">
+      <DependentUpon>NavLinksUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NavLinksUserControl.ascx.designer.cs">
+      <DependentUpon>NavLinksUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

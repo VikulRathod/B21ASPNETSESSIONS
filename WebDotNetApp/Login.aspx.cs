@@ -11,7 +11,7 @@ namespace WebDotNetApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void cbAction_CheckedChanged(object sender, EventArgs e)
@@ -43,6 +43,11 @@ namespace WebDotNetApp
             {
                 lblEmail.Text = "INVALID EMAIL";
             }
+        }
+
+        public void JSMethod()
+        {
+
         }
     }
 }

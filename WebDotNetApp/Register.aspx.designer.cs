@@ -11,8 +11,17 @@ namespace WebDotNetApp
 {
 
 
-    public partial class Login
+    public partial class Register
     {
+
+        /// <summary>
+        /// heading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebDotNetApp.HeadingUserControl heading;
 
         /// <summary>
         /// form1 control.
@@ -33,15 +42,6 @@ namespace WebDotNetApp
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// lblEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
-
-        /// <summary>
         /// txtPassword control.
         /// </summary>
         /// <remarks>
@@ -51,48 +51,30 @@ namespace WebDotNetApp
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// cbAction control.
+        /// txtConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbAction;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
 
         /// <summary>
-        /// btnLogin control.
+        /// btnRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Button btnRegister;
 
         /// <summary>
-        /// btnReset control.
+        /// btnClear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
-
-        /// <summary>
-        /// txtAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAddress;
-
-        /// <summary>
-        /// heading control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebDotNetApp.HeadingUserControl heading;
+        protected global::System.Web.UI.WebControls.Button btnClear;
     }
 }
