@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MySiteMaster.master.cs" Inherits="DataTransferTechniques.MySiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="padding:50px;border:1px solid green;">
+            <h2>Master Page Content</h2>
+            <asp:TextBox ID="txtMaster" runat="server"></asp:TextBox>
+            <asp:Button ID="btnMaster" runat="server" Text="Mater Button" OnClick="btnMaster_Click"/>
+            <hr />
+            <asp:ContentPlaceHolder ID="mainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

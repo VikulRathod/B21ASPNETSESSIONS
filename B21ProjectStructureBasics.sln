@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDotNetApp", "Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDotNetApp", "WebDotNetApp\WebDotNetApp.csproj", "{C06FF9C7-590B-4B52-AB85-07A880D5466B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferTechniques", "DataTransferTechniques\DataTransferTechniques.csproj", "{CE950D53-9FC8-4BEE-A745-97D0C46BE144}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C06FF9C7-590B-4B52-AB85-07A880D5466B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C06FF9C7-590B-4B52-AB85-07A880D5466B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C06FF9C7-590B-4B52-AB85-07A880D5466B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE950D53-9FC8-4BEE-A745-97D0C46BE144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE950D53-9FC8-4BEE-A745-97D0C46BE144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE950D53-9FC8-4BEE-A745-97D0C46BE144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE950D53-9FC8-4BEE-A745-97D0C46BE144}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
