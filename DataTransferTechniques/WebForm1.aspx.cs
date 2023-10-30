@@ -46,8 +46,12 @@ namespace DataTransferTechniques
             //Session["name"] = name;
             //Session["email"] = email;   
 
-            Application["name"] = name;
-            Application["email"] = email;
+            //Application["name"] = name;
+            //Application["email"] = email;
+
+            // Cache["name"] = name;
+            Cache.Insert("name", name, null, DateTime.Now.AddSeconds(5), TimeSpan.Zero);
+            Cache["email"] = email;
 
             Response.Redirect("~/WebForm2.aspx");
         }

@@ -42,13 +42,27 @@ namespace DataTransferTechniques
                 //}
 
                 // reading from application
-                if (Application["name"] != null)
+                //if (Application["name"] != null)
+                //{
+                //    lblName.Text = Application["name"].ToString();
+                //}
+                //if (Application["email"] != null)
+                //{
+                //    lblEmail.Text = Application["email"].ToString();
+                //}
+
+                // reading from cache object
+                if (Cache["name"] != null)
                 {
-                    lblName.Text = Application["name"].ToString();
+                    lblName.Text = Cache["name"].ToString();
                 }
-                if (Application["email"] != null)
+                else
                 {
-                    lblEmail.Text = Application["email"].ToString();
+                    lblName.Text = "Session Expired. Relogin";
+                }
+                if (Cache["email"] != null)
+                {
+                    lblEmail.Text = Cache["email"].ToString();
                 }
             }
         }

@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CachingDemo.aspx" />
+    <Content Include="CachingUserControl.ascx" />
     <Content Include="CalculatorPage.aspx" />
     <Content Include="Create.aspx" />
     <Content Include="Global.asax" />
@@ -77,6 +79,20 @@
     <Content Include="WebUserControl1.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachingDemo.aspx.cs">
+      <DependentUpon>CachingDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CachingDemo.aspx.designer.cs">
+      <DependentUpon>CachingDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CachingUserControl.ascx.cs">
+      <DependentUpon>CachingUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CachingUserControl.ascx.designer.cs">
+      <DependentUpon>CachingUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="CalculatorPage.aspx.cs">
       <DependentUpon>CalculatorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
