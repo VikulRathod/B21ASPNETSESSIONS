@@ -72,6 +72,7 @@
     <Content Include="CalculatorPage.aspx" />
     <Content Include="Create.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Register.aspx" />
     <Content Include="Views.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
@@ -118,6 +119,13 @@
       <DependentUpon>MySiteMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views.aspx.cs">
       <DependentUpon>Views.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
