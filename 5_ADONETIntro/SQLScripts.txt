@@ -1,0 +1,16 @@
+﻿create database B21AdoNetDb
+go
+use B21AdoNetDb
+go
+create table Student
+(
+RollNumber int,
+Name varchar(50),
+Gender varchar(20),
+City varchar(50)
+)
+go
+insert into Student values 
+(1, 'Vishal', 'Male', 'Pune'), (2, 'Ramesh','Male', 'Mumbai')
+go
+select RollNumber, Name, Gender, City from Student
