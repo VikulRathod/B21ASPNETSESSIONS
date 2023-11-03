@@ -72,6 +72,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modals\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Students.aspx.cs">
       <DependentUpon>Students.aspx</DependentUpon>

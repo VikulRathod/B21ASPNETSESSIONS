@@ -15,6 +15,10 @@
             <asp:Button ID="btnLoad" runat="server" Text="Search" OnClick="btnLoad_Click"/>
             <hr />
             <asp:GridView ID="gvStudents" runat="server"></asp:GridView>
+
+            <hr />
+            <h2>Trainers List</h2>
+            <asp:GridView ID="gvTrainers" runat="server"></asp:GridView>
         </div>
     </form>
 </body>
