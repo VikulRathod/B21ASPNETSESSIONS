@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="SQLScripts.txt" />
     <Content Include="Students.aspx" />
+    <Content Include="StudentsDashboard.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +82,14 @@
     <Compile Include="Students.aspx.designer.cs">
       <DependentUpon>Students.aspx</DependentUpon>
     </Compile>
+    <Compile Include="StudentsDashboard.aspx.cs">
+      <DependentUpon>StudentsDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentsDashboard.aspx.designer.cs">
+      <DependentUpon>StudentsDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Trainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -46,3 +46,79 @@ where RollNumber in (2)
 go
 
 select * from Student;select * from Trainer
+
+go
+
+use B21AdoNetDB
+go
+
+select * from Trainer
+select * from Student
+
+go
+
+create proc usp_GetAllStudents
+as
+begin
+	select s.RollNumber, s.Name as StudentName, 
+	s.Gender, s.City, s.TrainerId,
+	t.Name as TrainerName
+	from Student s left join Trainer t
+	on s.TrainerId = t.Id
+end
+
+go
+
+execute usp_GetAllStudents
+
+go
+
+create proc usp_GetStudentDetailsByRollNumber
+@RollNumber int
+as
+begin
+	select RollNumber, Name, Gender, City, TrainerId from
+	Student where RollNumber = @RollNumber
+end
+
+go
+
+execute usp_GetStudentDetailsByRollNumber 1
+execute usp_GetStudentDetailsByRollNumber 10
+
+go
+
+create proc usp_AllTrainers
+as
+begin
+	select Id, Name from Trainer
+end
+
+go
+
+execute usp_AllTrainers
+
+go
+
+create proc usp_CreateStudent
+@Name varchar(50), @Gender varchar(20),
+@City varchar(50), @TrainerId int, @Status bit output
+as
+begin
+begin try
+	declare @RN int
+	select @RN  = (max(RollNumber) + 1) from Student
+
+	insert into Student values
+	(@RN, @Name, @Gender, @City, @TrainerId)
+
+	set @Status = 1
+end try
+begin catch
+	set @Status = 0
+end catch
+end
+
+go
+
+select * from Student
