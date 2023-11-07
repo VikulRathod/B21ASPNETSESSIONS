@@ -122,3 +122,54 @@ end
 go
 
 select * from Student
+
+go
+
+use B21AdoNetDB
+go
+create proc usp_UpdateStudent
+@RollNumber int, @Name varchar(50), @Gender varchar(20),
+@City varchar(50), @TrainerId int, @Status bit output
+as
+begin
+begin try
+if exists (select RollNumber from Student where RollNumber = @RollNumber)
+begin
+	update Student set Name = @Name, Gender = @Gender, 
+	City = @City, TrainerId = @TrainerId
+	where RollNumber = @RollNumber
+
+	set @Status = 1
+end
+else
+begin
+	set @Status = 0
+end
+end try
+begin catch
+	set @Status = 0
+end catch
+end
+
+go
+
+create proc usp_DeleteStudent
+@RollNumber int, @Status bit output
+as
+begin
+begin try
+if exists (select RollNumber from Student where RollNumber = @RollNumber)
+begin
+	delete from Student where RollNumber = @RollNumber
+
+	set @Status = 1
+end
+else
+begin
+	set @Status = 0
+end
+end try
+begin catch
+	set @Status = 0
+end catch
+end

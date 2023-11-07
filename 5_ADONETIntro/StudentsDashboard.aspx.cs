@@ -26,7 +26,7 @@ namespace _5_ADONETIntro
             string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
             SqlConnection con = new SqlConnection(cs);
 
-            string cmdText = "usp_GetAllStudents";
+            string cmdText = DbConstants.spGetAllStudents;
             SqlCommand cmd = new SqlCommand(cmdText, con);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -42,7 +42,7 @@ namespace _5_ADONETIntro
             string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
             SqlConnection con = new SqlConnection(cs);
 
-            string cmdText = "usp_AllTrainers";
+            string cmdText = DbConstants.spAllTrainers;
             SqlCommand cmd = new SqlCommand(cmdText, con);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -64,7 +64,7 @@ namespace _5_ADONETIntro
             string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
             SqlConnection con = new SqlConnection(cs);
 
-            string cmdText = "usp_CreateStudent";
+            string cmdText = DbConstants.spCreateStudent;
             SqlCommand cmd = new SqlCommand(cmdText, con);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -101,12 +101,84 @@ namespace _5_ADONETIntro
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            int rollNumber = !string.IsNullOrEmpty(txtRollNumber.Text) ?
+                int.Parse(txtRollNumber.Text) : 0;
+            string name = txtName.Text;
+            string gender = txtGender.Text;
+            string city = txtCity.Text;
+            int trainerId = int.Parse(ddlTrainer.SelectedValue);
 
+            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            SqlConnection con = new SqlConnection(cs);
+
+            string cmdText = DbConstants.spUpdateStudent;
+            SqlCommand cmd = new SqlCommand(cmdText, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@RollNumber", rollNumber);
+            cmd.Parameters.AddWithValue("@Name", name);
+            cmd.Parameters.AddWithValue("@Gender", gender);
+            cmd.Parameters.AddWithValue("@City", city);
+            cmd.Parameters.AddWithValue("@TrainerId", trainerId);
+
+            SqlParameter status = new SqlParameter();
+            status.ParameterName = "@Status";
+            status.Direction = ParameterDirection.Output;
+            status.SqlDbType = SqlDbType.Bit;
+            cmd.Parameters.Add(status);
+
+            con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+
+            bool output = (bool) status.Value;
+            if (output)
+            {
+                ClearFields();
+                lblMessage.Text = "Student Details Updated Successfully";
+                LoadStudents();
+            }
+            else
+            {
+                lblMessage.Text = "Student Details Update Failed";
+            }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            int rollNumber = !string.IsNullOrEmpty(txtRollNumber.Text) ?
+                int.Parse(txtRollNumber.Text) : 0;
 
+            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            SqlConnection con = new SqlConnection(cs);
+
+            string cmdText = DbConstants.spDeleteStudent;
+            SqlCommand cmd = new SqlCommand(cmdText, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@RollNumber", rollNumber);
+
+            SqlParameter status = new SqlParameter();
+            status.ParameterName = "@Status";
+            status.Direction = ParameterDirection.Output;
+            status.SqlDbType = SqlDbType.Bit;
+            cmd.Parameters.Add(status);
+
+            con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+
+            bool output = (bool)status.Value;
+            if (output)
+            {
+                ClearFields();
+                lblMessage.Text = "Student Deleted Successfully";
+                LoadStudents();
+            }
+            else
+            {
+                lblMessage.Text = "Student Delete Failed";
+            }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -121,7 +193,8 @@ namespace _5_ADONETIntro
             txtGender.Text = string.Empty;
             txtCity.Text = string.Empty;
             // txtTrainerId.Text = string.Empty;
-            ddlTrainer.SelectedItem.Value = "-1";
+            // ddlTrainer.SelectedItem.Value = "-1";
+            ddlTrainer.SelectedValue = "-1";
             lblMessage.Text = string.Empty;
         }
 
@@ -130,7 +203,7 @@ namespace _5_ADONETIntro
             string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
             SqlConnection con = new SqlConnection(cs);
 
-            string cmdText = "usp_GetStudentDetailsByRollNumber";
+            string cmdText = DbConstants.spGetStudentDetailsByRollNumber;
             SqlCommand cmd = new SqlCommand(cmdText, con);
             cmd.CommandType = CommandType.StoredProcedure;
 

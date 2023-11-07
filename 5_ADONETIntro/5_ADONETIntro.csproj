@@ -67,12 +67,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="location-SQL-Scripts.txt" />
+    <Content Include="Location.aspx" />
     <Content Include="SQLScripts.txt" />
     <Content Include="Students.aspx" />
     <Content Include="StudentsDashboard.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbConstants.cs" />
+    <Compile Include="Location.aspx.cs">
+      <DependentUpon>Location.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Location.aspx.designer.cs">
+      <DependentUpon>Location.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modals\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Students.aspx.cs">
