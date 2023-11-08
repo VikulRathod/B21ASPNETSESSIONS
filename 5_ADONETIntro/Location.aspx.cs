@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,29 +18,97 @@ namespace _5_ADONETIntro
             if (!IsPostBack)
             {
                 LoadCountries();
+
+                //Customer c1 = new Customer();
+
+                //using (Customer c2 = new Customer())
+                //{
+
+                //}
             }
         }
+
+        //private void LoadCountries()
+        //{
+        //    string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+        //    SqlConnection con = new SqlConnection(cs);
+
+        //    SqlCommand cmd = new SqlCommand("usp_AllCountries", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+
+        //    con.Open();
+        //    SqlDataReader reader = cmd.ExecuteReader();
+
+        //    ddlCountry.DataValueField = "Id";
+        //    ddlCountry.DataTextField = "Name";
+        //    ddlCountry.DataSource = reader;
+        //    ddlCountry.DataBind();
+
+        //    ListItem li = new ListItem("-- Select Country --", "-1");
+        //    ddlCountry.Items.Insert(0, li);
+
+        //    con.Close();
+        //}
+
+        //private void LoadCountries()
+        //{
+        //    SqlConnection con = null;
+        //    try
+        //    {
+        //        string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+        //        con = new SqlConnection(cs);
+
+        //        SqlCommand cmd = new SqlCommand("usp_AllCountries", con);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+
+        //        con.Open();
+        //        SqlDataReader reader = cmd.ExecuteReader();
+
+        //        ddlCountry.DataValueField = "Id";
+        //        ddlCountry.DataTextField = "Name";
+        //        ddlCountry.DataSource = reader;
+        //        ddlCountry.DataBind();
+
+        //        ListItem li = new ListItem("-- Select Country --", "-1");
+        //        ddlCountry.Items.Insert(0, li);
+
+        //        //con.Close();
+        //    }
+        //    //catch (Exception ex)
+        //    //{
+        //    //    ListItem li = new ListItem("-- No Country --", "-1");
+        //    //    ddlCountry.Items.Insert(0, li);
+        //    //}
+        //    finally
+        //    {
+        //        if (con != null)
+        //        {
+        //            con.Close();
+        //        }
+        //    }
+        //}
 
         private void LoadCountries()
         {
             string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            using (SqlConnection con = new SqlConnection(cs)) 
+            {
+                SqlCommand cmd = new SqlCommand("usp_AllCountries", con);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand cmd = new SqlCommand("usp_AllCountries", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+                ddlCountry.DataValueField = "Id";
+                ddlCountry.DataTextField = "Name";
+                ddlCountry.DataSource = reader;
+                ddlCountry.DataBind();
 
-            ddlCountry.DataValueField = "Id";
-            ddlCountry.DataTextField = "Name";
-            ddlCountry.DataSource = reader;
-            ddlCountry.DataBind();
+                ListItem li = new ListItem("-- Select Country --", "-1");
+                ddlCountry.Items.Insert(0, li);
 
-            ListItem li = new ListItem("-- Select Country --", "-1");
-            ddlCountry.Items.Insert(0, li);
-
-            con.Close();
+                // con.Dispose(); // 1. closes connection 2. deallocate object
+            }
         }
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,6 +176,14 @@ namespace _5_ADONETIntro
             string city = ddlCity.SelectedItem.Text;
 
             lblLocation.Text = $"City : {city}<br/>State : {state} <br/>Country : {country}";
+        }
+    }
+
+    class Customer : IDisposable
+    {
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
