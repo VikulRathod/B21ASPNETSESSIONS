@@ -1,0 +1,62 @@
+﻿use B21AdoNetDB
+go
+create table Users
+(
+Id int primary key identity,
+Name varchar(50),
+Email varchar(100),
+Password varchar(50),
+CreatedDate datetime
+)
+
+go
+
+select * from Users
+
+go
+
+create proc usp_Register
+@Name varchar(50), @Email varchar(50), @Password varchar(50), @Status bit output
+as
+begin
+	begin try
+		if not exists (select Email from Users where EMail = @Email)
+		begin
+			insert into Users values (@Name, @Email, @Password, GETDATE())
+			set @Status = 1
+		end
+		else
+		begin
+			set @Status = 0
+		end
+	end try
+	begin catch
+		set @Status = 0
+	end catch
+end
+
+go
+
+alter proc usp_Register
+@Name varchar(50), @Email varchar(50), @Password varchar(50), @Status bit output,
+@RegNo int output
+as
+begin
+	begin try
+		if not exists (select Email from Users where EMail = @Email)
+		begin
+			insert into Users values (@Name, @Email, @Password, GETDATE())
+			select @RegNo = SCOPE_IDENTITY()
+			set @Status = 1
+		end
+		else
+		begin
+		set @RegNo = 0
+			set @Status = 0
+		end
+	end try
+	begin catch
+	set @RegNo = 0
+		set @Status = 0
+	end catch
+end
