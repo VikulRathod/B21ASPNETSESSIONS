@@ -23,8 +23,10 @@ namespace _5_ADONETIntro
 
         private void LoadStudents()
         {
-            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            //string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            //SqlConnection con = new SqlConnection(cs);
+
+            SqlConnection con = SqlHelper.DbConnection;
 
             string cmdText = DbConstants.spGetAllStudents;
             SqlCommand cmd = new SqlCommand(cmdText, con);
@@ -35,12 +37,16 @@ namespace _5_ADONETIntro
 
             gvStudents.DataSource = reader;
             gvStudents.DataBind();
+
+            con.Close();
         }
 
         private void LoadTrainers()
         {
-            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            //string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            //SqlConnection con = new SqlConnection(cs);
+
+            SqlConnection con = SqlHelper.DbConnection;
 
             string cmdText = DbConstants.spAllTrainers;
             SqlCommand cmd = new SqlCommand(cmdText, con);
@@ -57,12 +63,15 @@ namespace _5_ADONETIntro
 
             ListItem li = new ListItem("-- Select Trainer --", "-1");
             ddlTrainer.Items.Insert(0, li);
+
+            con.Close();
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            //string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            //SqlConnection con = new SqlConnection(cs);
+            SqlConnection con = SqlHelper.DbConnection;
 
             string cmdText = DbConstants.spCreateStudent;
             SqlCommand cmd = new SqlCommand(cmdText, con);
@@ -108,8 +117,9 @@ namespace _5_ADONETIntro
             string city = txtCity.Text;
             int trainerId = int.Parse(ddlTrainer.SelectedValue);
 
-            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            //string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            //SqlConnection con = new SqlConnection(cs);
+            SqlConnection con = SqlHelper.DbConnection;
 
             string cmdText = DbConstants.spUpdateStudent;
             SqlCommand cmd = new SqlCommand(cmdText, con);
@@ -142,6 +152,7 @@ namespace _5_ADONETIntro
             {
                 lblMessage.Text = "Student Details Update Failed";
             }
+            con.Close();
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -149,8 +160,9 @@ namespace _5_ADONETIntro
             int rollNumber = !string.IsNullOrEmpty(txtRollNumber.Text) ?
                 int.Parse(txtRollNumber.Text) : 0;
 
-            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            //string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            //SqlConnection con = new SqlConnection(cs);
+            SqlConnection con = SqlHelper.DbConnection;
 
             string cmdText = DbConstants.spDeleteStudent;
             SqlCommand cmd = new SqlCommand(cmdText, con);
@@ -179,6 +191,7 @@ namespace _5_ADONETIntro
             {
                 lblMessage.Text = "Student Delete Failed";
             }
+            con.Close();
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -200,8 +213,9 @@ namespace _5_ADONETIntro
 
         protected void btnLoad_Click(object sender, EventArgs e)
         {
-            string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
-            SqlConnection con = new SqlConnection(cs);
+            //string cs = ConfigurationManager.ConnectionStrings["B21AdoNetDB"].ConnectionString;
+            //SqlConnection con = new SqlConnection(cs);
+            SqlConnection con = SqlHelper.DbConnection;
 
             string cmdText = DbConstants.spGetStudentDetailsByRollNumber;
             SqlCommand cmd = new SqlCommand(cmdText, con);
@@ -233,6 +247,7 @@ namespace _5_ADONETIntro
             {
                 lblMessage.Text = "No Student Found For Given Roll Number.";
             }
+            con.Close();
         }
     }
 }
