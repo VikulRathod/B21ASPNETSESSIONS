@@ -1,11 +1,11 @@
 ﻿using Models;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class UsersDB
+    public class UsersDB : IUsersDB
     {
         public bool Insert(User user, out int registrationNumber)
         {

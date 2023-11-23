@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Unity;
 
 namespace Web.UI
 {
@@ -29,7 +30,11 @@ namespace Web.UI
                 Password = password
             };
 
-            UsersBL bl = new UsersBL();
+            // UsersBL bl = new UsersBL();
+
+            IUnityContainer unity = (UnityContainer)Application["unity"];
+            UsersBL bl = unity.Resolve<UsersBL>();
+
             int regNo;
             bool result = bl.Insert(user, out regNo);
 
