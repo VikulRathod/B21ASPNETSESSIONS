@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="B21EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="RollNumber" />
+          </Key>
+          <Property Name="RollNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="TrainerId" Type="int" />
+        </EntityType>
         <EntityType Name="Trainer">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,8 +23,29 @@
           <Property Name="Experience" Type="int" />
           <Property Name="City" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__Student__Trainer__5CD6CB2B">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_GetStudentByRollNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RollNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="B21EFDBModelStoreContainer">
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Student__Trainer__5CD6CB2B" Association="Self.FK__Student__Trainer__5CD6CB2B">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -29,10 +59,54 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Experience" Type="Int32" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Students" Relationship="B21EFDBModel.FK__Student__Trainer__5CD6CB2B" FromRole="Trainer" ToRole="Student" />
         </EntityType>
         <EntityContainer Name="B21DbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+          <EntitySet Name="Students" EntityType="B21EFDBModel.Student" />
+          <AssociationSet Name="FK__Student__Trainer__5CD6CB2B" Association="B21EFDBModel.FK__Student__Trainer__5CD6CB2B">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <FunctionImport Name="GetStudents" EntitySet="Students" ReturnType="Collection(B21EFDBModel.Student)" />
+          <FunctionImport Name="GetStudentByRollNumber" EntitySet="Students" ReturnType="Collection(B21EFDBModel.Student)">
+            <Parameter Name="RollNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="RollNumber" />
+          </Key>
+          <Property Name="RollNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TrainerId" Type="Int32" />
+          <NavigationProperty Name="Trainer" Relationship="B21EFDBModel.FK__Student__Trainer__5CD6CB2B" FromRole="Student" ToRole="Trainer" />
+        </EntityType>
+        <Association Name="FK__Student__Trainer__5CD6CB2B">
+          <End Type="B21EFDBModel.Trainer" Role="Trainer" Multiplicity="0..1" />
+          <End Type="B21EFDBModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_GetStudents_Result">
+          <Property Type="Int32" Name="RollNumber" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="TrainerId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_GetStudentByRollNumber_Result">
+          <Property Type="Int32" Name="RollNumber" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="TrainerId" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -49,6 +123,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="B21EFDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RollNumber" ColumnName="RollNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetStudents" FunctionName="B21EFDBModel.Store.usp_GetStudents">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentByRollNumber" FunctionName="B21EFDBModel.Store.usp_GetStudentByRollNumber">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

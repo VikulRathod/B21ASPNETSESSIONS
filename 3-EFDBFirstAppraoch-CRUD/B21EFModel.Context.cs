@@ -12,6 +12,8 @@ namespace _3_EFDBFirstAppraoch_CRUD
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class B21DbContext : DbContext
     {
@@ -26,5 +28,34 @@ namespace _3_EFDBFirstAppraoch_CRUD
         }
     
         public virtual DbSet<Trainer> Trainers { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+    
+        public virtual ObjectResult<Student> GetStudents()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student>("GetStudents");
+        }
+    
+        public virtual ObjectResult<Student> GetStudents(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student>("GetStudents", mergeOption);
+        }
+    
+        public virtual ObjectResult<Student> GetStudentByRollNumber(Nullable<int> rollNumber)
+        {
+            var rollNumberParameter = rollNumber.HasValue ?
+                new ObjectParameter("RollNumber", rollNumber) :
+                new ObjectParameter("RollNumber", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student>("GetStudentByRollNumber", rollNumberParameter);
+        }
+    
+        public virtual ObjectResult<Student> GetStudentByRollNumber(Nullable<int> rollNumber, MergeOption mergeOption)
+        {
+            var rollNumberParameter = rollNumber.HasValue ?
+                new ObjectParameter("RollNumber", rollNumber) :
+                new ObjectParameter("RollNumber", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Student>("GetStudentByRollNumber", mergeOption, rollNumberParameter);
+        }
     }
 }

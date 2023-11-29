@@ -84,5 +84,27 @@ namespace _3_EFDBFirstAppraoch_CRUD
 
             ClearForm();
         }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int trainerId = int.Parse(txtId.Text);
+            string name = txtName.Text;
+            int experience = int.Parse(txtExperience.Text);
+            string city = txtCity.Text;
+
+            B21DbContext db = new B21DbContext();
+            Trainer dbTrainer = db.Trainers.FirstOrDefault(t => t.Id == trainerId);
+            dbTrainer.Name = name;
+            dbTrainer.Experience = experience;
+            dbTrainer.City = city;
+
+            db.SaveChanges();
+
+            lblMessage.Text = $"Trainer with id {trainerId} updated successfully";
+
+            LoadTrainers(); // to refersh trainer grid
+
+            ClearForm();
+        }
     }
 }

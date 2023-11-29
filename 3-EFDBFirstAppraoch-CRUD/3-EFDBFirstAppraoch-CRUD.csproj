@@ -85,6 +85,7 @@
       <DependentUpon>B21EFModel.edmx</DependentUpon>
       <LastGenOutput>B21EFModel.cs</LastGenOutput>
     </Content>
+    <Content Include="StudentDashboard.aspx" />
     <Content Include="TrainerDashboard.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -105,6 +106,16 @@
       <DependentUpon>B21EFModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs">
+      <DependentUpon>B21EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentDashboard.aspx.cs">
+      <DependentUpon>StudentDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentDashboard.aspx.designer.cs">
+      <DependentUpon>StudentDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Trainer.cs">
       <DependentUpon>B21EFModel.tt</DependentUpon>
     </Compile>
@@ -114,6 +125,12 @@
     </Compile>
     <Compile Include="TrainerDashboard.aspx.designer.cs">
       <DependentUpon>TrainerDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetStudentByRollNumber_Result.cs">
+      <DependentUpon>B21EFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_GetStudents_Result.cs">
+      <DependentUpon>B21EFModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

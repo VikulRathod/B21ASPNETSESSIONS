@@ -11,7 +11,7 @@ namespace _3_EFDBFirstAppraoch_CRUD
 {
 
 
-    public partial class TrainerDashboard
+    public partial class StudentDashboard
     {
 
         /// <summary>
@@ -24,31 +24,31 @@ namespace _3_EFDBFirstAppraoch_CRUD
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// linkStudents control.
+        /// linkTrainers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkStudents;
+        protected global::System.Web.UI.WebControls.HyperLink linkTrainers;
 
         /// <summary>
-        /// txtId control.
+        /// txtRollNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtId;
+        protected global::System.Web.UI.WebControls.TextBox txtRollNumber;
 
         /// <summary>
-        /// btnLoad control.
+        /// btnLoadStudent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLoad;
+        protected global::System.Web.UI.WebControls.Button btnLoadStudent;
 
         /// <summary>
         /// txtName control.
@@ -60,49 +60,40 @@ namespace _3_EFDBFirstAppraoch_CRUD
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// txtExperience control.
+        /// rblGender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExperience;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblGender;
 
         /// <summary>
-        /// txtCity control.
+        /// rbMale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCity;
+        protected global::System.Web.UI.WebControls.ListItem rbMale;
 
         /// <summary>
-        /// btnCreate control.
+        /// rbFemale control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreate;
+        protected global::System.Web.UI.WebControls.ListItem rbFemale;
 
         /// <summary>
-        /// btnUpdate control.
+        /// txtTrainerId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
-
-        /// <summary>
-        /// btnDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
+        protected global::System.Web.UI.WebControls.TextBox txtTrainerId;
 
         /// <summary>
         /// lblMessage control.
@@ -114,12 +105,12 @@ namespace _3_EFDBFirstAppraoch_CRUD
         protected global::System.Web.UI.WebControls.Label lblMessage;
 
         /// <summary>
-        /// gvTrainers control.
+        /// gvStudents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTrainers;
+        protected global::System.Web.UI.WebControls.GridView gvStudents;
     }
 }
