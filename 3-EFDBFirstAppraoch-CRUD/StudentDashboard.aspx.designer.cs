@@ -96,6 +96,15 @@ namespace _3_EFDBFirstAppraoch_CRUD
         protected global::System.Web.UI.WebControls.TextBox txtTrainerId;
 
         /// <summary>
+        /// btnClear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>

@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-EFDbFirstApproach", "2-EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-EFDBFirstAppraoch-CRUD", "3-EFDBFirstAppraoch-CRUD\3-EFDBFirstAppraoch-CRUD.csproj", "{15B1F768-6E37-4184-BE15-76236CACB974}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCodeFirstApproach", "EFCodeFirstApproach\EFCodeFirstApproach.csproj", "{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,10 @@ Global
 		{15B1F768-6E37-4184-BE15-76236CACB974}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B1F768-6E37-4184-BE15-76236CACB974}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B1F768-6E37-4184-BE15-76236CACB974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{BF5D030F-2A04-4656-BE50-0AC2F8D42567} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
 		{56678281-B07E-4E51-A27B-0F15E249140D} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
 		{15B1F768-6E37-4184-BE15-76236CACB974} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
+		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {893BDE5D-5879-4C70-94A6-E4760E849CC9}

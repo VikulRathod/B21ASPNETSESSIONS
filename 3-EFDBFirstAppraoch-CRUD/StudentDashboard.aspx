@@ -43,6 +43,11 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
                 </td>
             </tr>

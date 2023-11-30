@@ -70,7 +70,7 @@
           </AssociationSet>
           <FunctionImport Name="GetStudents" EntitySet="Students" ReturnType="Collection(B21EFDBModel.Student)" />
           <FunctionImport Name="GetStudentByRollNumber" EntitySet="Students" ReturnType="Collection(B21EFDBModel.Student)">
-            <Parameter Name="RollNumber" Mode="In" Type="Int32" />
+          <Parameter Name="RollNumber" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Student">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,8 +20,8 @@ namespace _3_EFDBFirstAppraoch_CRUD
         void LoadStudents()
         {
             B21DbContext db = new B21DbContext();
-            // gvStudents.DataSource = db.Students.ToList();
-            gvStudents.DataSource = db.GetStudents().ToList();
+            gvStudents.DataSource = db.Students.ToList();
+            // gvStudents.DataSource = db.GetStudents().ToList();
             gvStudents.DataBind();
         }
 
@@ -36,7 +37,7 @@ namespace _3_EFDBFirstAppraoch_CRUD
 
             foreach (ListItem item in rblGender.Items)
             {
-                if(item.Value == s.Gender)
+                if (item.Value == s.Gender)
                 {
                     item.Selected = true;
                     break;
@@ -46,6 +47,26 @@ namespace _3_EFDBFirstAppraoch_CRUD
             txtTrainerId.Text = s.TrainerId.ToString();
 
             lblMessage.Text = $"Student with roll number {rollNumber} loaded successfully";
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+
+        void ClearForm()
+        {
+            txtRollNumber.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtTrainerId.Text = string.Empty;
+
+            foreach (ListItem item in rblGender.Items)
+            {
+                item.Selected = false;
+            }
+
+            //rblGender.Items.AsQueryable()
+            //    .ForEachAsync(o => ((ListItem)o).Selected = false);
         }
     }
 }
