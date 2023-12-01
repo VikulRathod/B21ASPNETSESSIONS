@@ -23,7 +23,7 @@ namespace EFCodeFirstApproach.Models
         public string Gender { get; set; }
 
         [ForeignKey("Trainer")]
-        public int TrainerId { get; set; }
+        public Nullable<int> TrainerId { get; set; }
 
         public Trainer Trainer { get; set; } // navigation property
     }

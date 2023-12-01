@@ -8,7 +8,7 @@
     internal sealed class Configuration : DbMigrationsConfiguration<EFCodeFirstApproach.Models.B21CodeFirstDBContext>
     {
         public Configuration()
-        {
+        {            
             AutomaticMigrationsEnabled = false;
         }
 
@@ -18,6 +18,11 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+
+            context.Courses.Add(new Models.Course() 
+            { Id=1, Name = "Dot Net", DurationInMonths = 6, Fees = 50000});
+
+            context.SaveChanges();
         }
     }
 }
