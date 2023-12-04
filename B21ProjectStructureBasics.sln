@@ -51,6 +51,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-EFDBFirstAppraoch-CRUD", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCodeFirstApproach", "EFCodeFirstApproach\EFCodeFirstApproach.csproj", "{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mvc code", "mvc code", "{25D743E8-3E96-468F-99C0-9C04F32F24FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-MVCProjectStructure", "1-MVCProjectStructure\1-MVCProjectStructure.csproj", "{48BEA0C1-9588-4FFE-AF93-A8D8093BA68E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +141,10 @@ Global
 		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48BEA0C1-9588-4FFE-AF93-A8D8093BA68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48BEA0C1-9588-4FFE-AF93-A8D8093BA68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48BEA0C1-9588-4FFE-AF93-A8D8093BA68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48BEA0C1-9588-4FFE-AF93-A8D8093BA68E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -157,6 +165,7 @@ Global
 		{56678281-B07E-4E51-A27B-0F15E249140D} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
 		{15B1F768-6E37-4184-BE15-76236CACB974} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
 		{DDA7CEDF-715C-46FF-8F70-46A2288B7C61} = {CC3B06C3-A516-4A0F-8A6C-4A70D6746572}
+		{48BEA0C1-9588-4FFE-AF93-A8D8093BA68E} = {25D743E8-3E96-468F-99C0-9C04F32F24FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {893BDE5D-5879-4C70-94A6-E4760E849CC9}

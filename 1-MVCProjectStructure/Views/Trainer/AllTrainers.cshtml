@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllTrainers</title>
+</head>
+<body>
+    <div>
+        <h1>First Page Using View</h1>
+        @*<table>
+                <tr>
+                   <th>Name</th>
+                    <th>Experience</th>
+                </tr>
+                <tr>
+                    <td>Vikul</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>Usha</td>
+                    <td>3</td>
+                </tr>
+            </table>*@
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Experience</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    @foreach (var t in ViewBag.Trainers)
+                    {
+                        <tr>
+                            <td>@t.Id</td>
+                            <td>@t.Name</td>
+                            <td>@t.Experience</td>
+                        </tr>
+                    }                
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
