@@ -13,11 +13,23 @@ namespace _1_MVCProjectStructure
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes(); // to enable attribute based routing
+
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Trainer", action = "AllTrainers", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}", // pattern
+                defaults: new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
             );
+
+            routes.MapRoute(
+                name: "SecondRoute",
+                url: "{controller}/{action}/{id}/{name}"
+                );
         }
     }
 }
