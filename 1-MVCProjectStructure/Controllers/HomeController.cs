@@ -26,5 +26,12 @@ namespace _1_MVCProjectStructure.Controllers
 
             return View();
         }
+
+        // private string InternalLogicMethod()
+        [NonAction]
+        public string InternalLogicMethod()
+        {
+            return "Method written for internal logic";
+        }
     }
 }

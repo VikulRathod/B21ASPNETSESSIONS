@@ -20,8 +20,8 @@ namespace _1_MVCProjectStructure
                 url: "{controller}/{action}/{id}", // pattern
                 defaults: new
                 {
-                    controller = "Home",
-                    action = "Index",
+                    controller = "Student",
+                    action = "Create",
                     id = UrlParameter.Optional
                 }
             );

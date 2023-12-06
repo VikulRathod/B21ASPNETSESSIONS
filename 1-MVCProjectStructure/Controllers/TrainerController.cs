@@ -12,20 +12,21 @@ namespace _1_MVCProjectStructure.Controllers
     [RoutePrefix("vhaash")]
     public class TrainerController : Controller
     {
-        // vhaash
+        // http://localhost/vhaash
         [Route("")]
         public string Welcome()
         {
             return "<h1>My MVC First Application</h1>";
         }
 
-        // vhaash/vishal
-       //  [Route("{name:string}")]
-        // [Route("{id:int}")]
-        public string Hello(string name)
-        {
-            return $"Good Morning, {name}";
-        }
+        //// http://localhost/vhaash/vishal
+        ////  [Route("{name:string}")]
+        //// [Route("{id:int}")]
+        //[Route("{name?}")]
+        //public string Hello(string name)
+        //{
+        //    return $"Good Morning, {name}";
+        //}
 
         // trainer/alltrainers
         // trainer/dashboard
