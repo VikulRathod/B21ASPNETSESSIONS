@@ -1,0 +1,58 @@
+﻿@using _2_ViewsDemo.Models
+
+@model _2_ViewsDemo.Models.Trainer
+
+<p>@ViewData["name"]</p>
+<p>Using ViewBag : @ViewBag.name</p>
+
+<p>@ViewData["name"].ToString().ToUpper()</p>
+
+<p>@ViewBag.Email</p>
+<p>Using ViewData : @ViewData["Email"]</p>
+<p>@ViewBag.Email.ToUpper()</p>
+
+
+@{ 
+    var trainer = (Trainer)ViewData["trainer"];
+}
+
+<ul>
+    <li>Trainer Id : @trainer.TrainerId</li>
+    <li>Trainer Name : @trainer.Name</li>
+    <li>Trainer Experience : @trainer.Experience</li>
+</ul>
+
+<hr />
+
+<ul>
+    <li>Trainer Id : @ViewBag.newtrainer.TrainerId</li>
+    <li>Trainer Name : @ViewBag.newtrainer.Name</li>
+    <li>Trainer Experience : @ViewBag.newtrainer.Experience</li>
+</ul>
+
+<hr />
+<h3>Strongly typed data</h3>
+<ul>
+    <li>Trainer Id : @Model.TrainerId</li>
+    <li>Trainer Name : @Model.Name</li>
+    <li>Trainer Experience : @Model.Experience</li>
+</ul>
+
+<hr />
+<table>
+    <tr>
+        <td>
+            @Html.TextBoxFor(model => model.TrainerId)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(model => model.Name)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBoxFor(model => model.Experience)
+        </td>
+    </tr>
+</table>

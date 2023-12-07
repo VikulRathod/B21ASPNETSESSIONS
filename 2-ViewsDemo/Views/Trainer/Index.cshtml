@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index View Content</h2>
+
+<table>
+    <tr>
+        <td>
+            <label>Name</label>
+            @Html.Label("Name")
+        </td>
+        <td>
+            <input type="text" />
+            @Html.TextBox("txtName")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Password</label>
+            @Html.Label("Password")
+        </td>
+        <td>
+            <input type="password" />
+            @Html.Password("txtPassword")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Gender")
+        </td>
+        <td>
+            @Html.RadioButton("Gender", false) Male
+            @Html.RadioButton("Gender", false) Female
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="Log In" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="http://www.google.com" target="_blank">forgot password?</a>
+            @Html.ActionLink("Visit Index 2", "Index2",null, new { style = "color:red"})
+        </td>
+    </tr>
+</table>
+<hr />
+
+@{
+    // C# code
+    int num = 10;
+
+    if (num == 1)
+    {
+        <p>First Paragraph</p>
+    }
+    else
+    {
+        <p>Second Paragraph</p>
+    }
+}
+
+<hr />
+
+@{
+    List<string> names = new List<string>() { "Kunal", "Umesh", "Ritesh" };
+
+    <ul>
+        @foreach (var name in names)
+        {
+            <li>@name</li>
+        }
+    </ul>
+}
+
