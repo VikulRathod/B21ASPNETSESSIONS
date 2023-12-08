@@ -16,7 +16,7 @@ namespace _2_ViewsDemo
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Trainer", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Student", action = "Index1", id = UrlParameter.Optional }
             );
         }
     }

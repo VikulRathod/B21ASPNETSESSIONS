@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Index 1 View Content</h2>
+
+@Html.ActionLink("Index 2", "Index2")
+
+@*@Html.Partial("_PartialView1")*@
+
+@{ 
+    Html.RenderPartial("_PartialView1");
+}

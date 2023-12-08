@@ -2,6 +2,11 @@
 
 @model _2_ViewsDemo.Models.Trainer
 
+<h2>Index 2 View Content</h2>
+@Html.ActionLink("Open Index 3", "Index3")
+
+<h3>TempData value : @ViewBag.data</h3>
+
 <p>@ViewData["name"]</p>
 <p>Using ViewBag : @ViewBag.name</p>
 
@@ -12,7 +17,7 @@
 <p>@ViewBag.Email.ToUpper()</p>
 
 
-@{ 
+@{
     var trainer = (Trainer)ViewData["trainer"];
 }
 
