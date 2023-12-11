@@ -14,9 +14,14 @@ namespace _2_ViewsDemo.Controllers
             return View();
         }
 
-        public ActionResult Index2()
+        public ViewResult Index2()
         {
             return View();
+        }
+
+        public PartialViewResult PartialView2Content()
+        {
+            return PartialView("_PartialView2","Vishal");
         }
     }
 }

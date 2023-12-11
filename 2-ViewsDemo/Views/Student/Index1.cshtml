@@ -7,8 +7,17 @@
 
 @Html.ActionLink("Index 2", "Index2")
 
-@*@Html.Partial("_PartialView1")*@
+@*@Html.Partial("_PartialView1", "MVC Learning")
 
-@{ 
-    Html.RenderPartial("_PartialView1");
+@Html.Partial("_PartialView1", 100)*@
+
+@*@{
+        <h3>Direct heading rendered on browser</h3>
+        Html.RenderPartial("_PartialView1");
+    }*@
+
+@*@Html.Action("PartialView2Content")*@
+
+@{
+    Html.RenderAction("PartialView2Content");
 }

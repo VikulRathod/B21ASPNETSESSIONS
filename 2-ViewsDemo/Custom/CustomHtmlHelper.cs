@@ -21,7 +21,8 @@ namespace _2_ViewsDemo.Custom
             string path, string altText, string width, string height)
         {
             TagBuilder img = new TagBuilder("img");
-            img.Attributes.Add("src",path);
+            // img.Attributes.Add("src",path);
+            img.Attributes.Add("src", HttpContext.Current.Server.MapPath(path));
             img.Attributes.Add("alt", altText);
             img.Attributes.Add("width", width);
             img.Attributes.Add("height", height);
