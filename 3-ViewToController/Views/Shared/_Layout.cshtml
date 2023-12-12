@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -25,53 +24,15 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content border border-2">
-
-        <div class="row">
-            <div class="col-3">
-                <div class="row pb-5 border border-bottom-3">
-                    @if (IsSectionDefined("LeftPanel"))
-                    {
-                        @RenderSection("LeftPanel");
-                    }
-                    else
-                    {
-                        <span>No Side Content</span>
-                    }
-                </div>
-                @*<div class="row pt-5">
-                        @if (IsSectionDefined("Ads"))
-                        {
-                            @RenderSection("Ads")
-                        }
-                        else
-                        {
-                            <span>No Advertisements</span>
-                        }
-                    </div>*@
-
-                @if (IsSectionDefined("Ads"))
-                {
-                    <div class="row pt-5">
-                        @RenderSection("Ads")
-                    </div>
-                }
-
-            </div>
-            <div class="col-9">
-                @RenderBody()
-            </div>
-        </div>
-
+    <div class="container body-content">
+        @RenderBody()
         <hr />
-        @*@RenderBody()*@
-        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
     </div>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
 
-
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

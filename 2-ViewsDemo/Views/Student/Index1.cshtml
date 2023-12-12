@@ -9,7 +9,7 @@
 
 @*@Html.Partial("_PartialView1", "MVC Learning")
 
-@Html.Partial("_PartialView1", 100)*@
+    @Html.Partial("_PartialView1", 100)*@
 
 @*@{
         <h3>Direct heading rendered on browser</h3>
@@ -21,3 +21,20 @@
 @{
     Html.RenderAction("PartialView2Content");
 }
+
+@section LeftPanel
+{
+    <span>Index 1 View Side Content</span>
+}
+
+@section Ads
+{
+    <a href="#">flipkart.com</a>
+    <a href="#">Amazon.com</a>
+}
+
+<script>
+    $(function () {
+        alert('Index 1 loaded');
+    });
+</script>
