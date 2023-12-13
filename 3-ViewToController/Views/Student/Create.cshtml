@@ -1,0 +1,74 @@
+﻿@model _3_ViewToController.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Student</h2>
+
+@using (Html.BeginForm("Create", "Student", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                @Html.TextBoxFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                @Html.TextBoxFor(model => model.Gender)
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                @Html.TextBoxFor(model => model.Email, new { @readonly = true })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Create" />
+            </td>
+        </tr>
+    </table>
+}
+
+
+@*@using (Html.BeginForm("Create", "Student", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" id="name" name="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="text" id="gender" name="gender" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" id="email" name="email" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Create" />
+                </td>
+            </tr>
+        </table>
+    }*@
+
+@*@using (Html.BeginForm("Create", "Student", FormMethod.Post))
+    {
+        <input type="text" id="search" name="search" />
+        <input type="submit" value="Search" />
+    }*@
+
+

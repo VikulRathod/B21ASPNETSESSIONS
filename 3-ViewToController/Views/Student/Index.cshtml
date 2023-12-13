@@ -1,0 +1,38 @@
+﻿@using _3_ViewToController.Models
+@model IEnumerable<_3_ViewToController.Models.Student>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index View Content</h2>
+
+@Html.ActionLink("Create New Student", "Create", "Student")
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+    </tr>
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (Student item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Gender</td>
+                <td>@item.Email</td>
+            </tr>
+        }
+    }
+    else
+    {
+     <tr>
+         <td colspan="3">
+             No Students Data Available
+         </td>
+     </tr>
+    }
+</table>
