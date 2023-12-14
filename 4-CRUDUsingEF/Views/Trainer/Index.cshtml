@@ -1,0 +1,46 @@
+﻿@using _4_CRUDUsingEF.Models
+@model IEnumerable<_4_CRUDUsingEF.Models.Trainer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Trainers</h2>
+
+@*<ul>
+        @foreach (Trainer item in Model)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>*@
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Trainer Id</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>Experience</th>
+        <th>City</th>
+    </tr>
+    @if (Model != null && Model.Count() > 0)
+    {
+        foreach (Trainer item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                @*<td>@item.Name</td>*@
+                <td>
+                    @Html.ActionLink(item.Name, "Index", "Student", new {trainerId = item.Id}, null)
+                </td>
+                <td>@item.Experience</td>
+                <td>@item.City</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>No Trainers Found</td>
+        </tr>
+    }
+</table>
