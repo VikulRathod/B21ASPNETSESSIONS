@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="B21EFDBModel.Student" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="B21EFDBModel.Trainer" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="B21EFDBModel.FK__Student__Trainer__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="B21EFDBModel.Course" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="B21EFDBModel.FK__Course__TrainerI__6FE99F9F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

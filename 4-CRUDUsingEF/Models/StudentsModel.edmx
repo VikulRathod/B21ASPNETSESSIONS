@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="B21EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="B21EFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="TrainerId" Type="int" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="RollNumber" />
@@ -23,6 +31,18 @@
           <Property Name="Experience" Type="int" />
           <Property Name="City" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__Course__TrainerI__6FE99F9F">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Student__Trainer__5CD6CB2B">
           <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
@@ -36,15 +56,19 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="B21EFDBModelStoreContainer">
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Course__TrainerI__6FE99F9F" Association="Self.FK__Course__TrainerI__6FE99F9F">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
           <AssociationSet Name="FK__Student__Trainer__5CD6CB2B" Association="Self.FK__Student__Trainer__5CD6CB2B">
             <End Role="Trainer" EntitySet="Trainer" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="B21EFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -67,6 +91,7 @@
           <Property Name="Experience" Type="Int32" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Students" Relationship="Self.FK__Student__Trainer__5CD6CB2B" FromRole="Trainer" ToRole="Student" />
+          <NavigationProperty Name="Courses" Relationship="B21EFDBModel.FK__Course__TrainerI__6FE99F9F" FromRole="Trainer" ToRole="Course" />
         </EntityType>
         <Association Name="FK__Student__Trainer__5CD6CB2B">
           <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
@@ -87,7 +112,33 @@
             <End Role="Trainer" EntitySet="Trainers" />
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
+          <EntitySet Name="Courses" EntityType="B21EFDBModel.Course" />
+          <AssociationSet Name="FK__Course__TrainerI__6FE99F9F" Association="B21EFDBModel.FK__Course__TrainerI__6FE99F9F">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrainerId" Type="Int32" />
+          <NavigationProperty Name="Trainer" Relationship="B21EFDBModel.FK__Course__TrainerI__6FE99F9F" FromRole="Course" ToRole="Trainer" />
+        </EntityType>
+        <Association Name="FK__Course__TrainerI__6FE99F9F">
+          <End Type="B21EFDBModel.Trainer" Role="Trainer" Multiplicity="0..1" />
+          <End Type="B21EFDBModel.Course" Role="Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,6 +162,15 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Experience" ColumnName="Experience" />
                 <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="B21EFDBModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

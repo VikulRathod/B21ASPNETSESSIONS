@@ -7,6 +7,8 @@
 
 <h2>All Trainers</h2>
 
+@Html.ActionLink("Create new Trainer", "Create")
+
 @*<ul>
         @foreach (Trainer item in Model)
         {
@@ -21,6 +23,7 @@
         </th>
         <th>Experience</th>
         <th>City</th>
+        <th>Action</th>
     </tr>
     @if (Model != null && Model.Count() > 0)
     {
@@ -34,6 +37,11 @@
                 </td>
                 <td>@item.Experience</td>
                 <td>@item.City</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { trainerId = item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { trainerId = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { trainerId = item.Id })
+                </td>
             </tr>
         }
     }

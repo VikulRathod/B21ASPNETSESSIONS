@@ -11,24 +11,24 @@ namespace _4_CRUDUsingEF.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Trainer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Trainer()
         {
             this.Students = new HashSet<Student>();
+            this.Courses = new HashSet<Course>();
         }
     
         public int Id { get; set; }
-
-        [DisplayName("Trainer Name")]
         public string Name { get; set; }
         public Nullable<int> Experience { get; set; }
         public string City { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Course> Courses { get; set; }
     }
 }
