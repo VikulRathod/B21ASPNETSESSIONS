@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Admin Area Dashboard</h2>
+
+<hr />
+
+@Html.TextBox("txtName")
+
+<hr />
+
+@Html.ActionLink("Trainer", "Index", "Trainer", new { area = "" }, null) |
+@Html.ActionLink("Student", "Index", "Student", new { area = "student" }, null) |
+@Html.ActionLink("Course", "Index", "Course", new { area = "" }, null)
+
+<script>
+
+    function showPopup() {
+        alert('Admin Area Loaded');
+
+        document.getElementById('txtName').value = "Bharat";
+    }
+
+    showPopup();
+
+</script>
