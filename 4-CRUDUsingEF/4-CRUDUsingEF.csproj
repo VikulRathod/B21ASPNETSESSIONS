@@ -164,6 +164,7 @@
     <Compile Include="Models\Trainer.cs">
       <DependentUpon>StudentsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TrainerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

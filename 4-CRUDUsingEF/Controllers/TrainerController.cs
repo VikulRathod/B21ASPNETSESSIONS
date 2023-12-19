@@ -33,12 +33,15 @@ namespace _4_CRUDUsingEF.Controllers
         {
             try
             {
-                StudentDbContext db = new StudentDbContext();
-                db.Trainers.Add(trainer);
+                if (ModelState.IsValid)
+                {
+                    StudentDbContext db = new StudentDbContext();
+                    db.Trainers.Add(trainer);
 
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View();                
             }
             catch
             {
