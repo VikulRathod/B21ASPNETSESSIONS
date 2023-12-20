@@ -40,7 +40,10 @@
                 <td>@item.Experience</td>
                 <td>@item.City</td>
                 <td>@item.Email</td>
-                <td>@item.DateOfBirth</td>
+                @*<td>@item.DateOfBirth</td>*@
+                <td>
+                    @Html.DisplayFor(model => item.DateOfBirth)
+                </td>
                 <td>
                     @Html.ActionLink("Details", "Details", new { trainerId = item.Id }) |
                     @Html.ActionLink("Edit", "Edit", new { trainerId = item.Id }) |

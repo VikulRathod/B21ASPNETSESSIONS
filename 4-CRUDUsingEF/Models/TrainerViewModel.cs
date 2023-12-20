@@ -1,8 +1,11 @@
-﻿using System;
+﻿using _4_CRUDUsingEF;
+using _4_CRUDUsingEF.Utility;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using mvc = System.Web.Mvc;
 
 namespace _4_CRUDUsingEF.Models
 {
@@ -33,11 +36,16 @@ namespace _4_CRUDUsingEF.Models
         // [RegularExpression(@ "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Invalid Email")]
         // [EmailAddress(ErrorMessage = "Invalid Email")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Invalid Email")]
+
+        [mvc.Remote("IsEmailExists", "Trainer", ErrorMessage = "Email already taken")]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Date, ErrorMessage = "Invalid Date")]
         // [Range(18, 40, ErrorMessage = "Age should be between 18 to 40 years")]
+        // [Range(typeof(DateTime), "01/01/2000", "12/20/2023")]
+        [DateRangeAttribute("01/01/2000")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
     }
 }

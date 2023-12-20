@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace _4_CRUDUsingEF.Controllers
@@ -41,7 +42,7 @@ namespace _4_CRUDUsingEF.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                return View();                
+                return View();
             }
             catch
             {
@@ -122,6 +123,16 @@ namespace _4_CRUDUsingEF.Controllers
             Trainer trainer = db.Trainers.FirstOrDefault(t => t.Id == trainerId);
 
             return View(trainer);
+        }
+
+        [HttpGet]
+        public JsonResult IsEmailExists(string Email)
+        {
+            StudentDbContext db = new StudentDbContext();
+
+            bool isExists = db.Trainers.Any(t => t.Email == Email);
+
+            return Json(!isExists, JsonRequestBehavior.AllowGet);
         }
     }
 }
