@@ -9,8 +9,11 @@ using System.Web.Mvc;
 
 namespace _4_CRUDUsingEF.Controllers
 {
+    // [Authorize]
     public class TrainerController : Controller
     {
+        // [Authorize]
+        // [AllowAnonymous]
         // GET: Trainer
         public ActionResult Index()
         {
