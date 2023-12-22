@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using _4_CRUDUsingEF.Utility;
+using System.Web;
 using System.Web.Mvc;
 
 namespace _4_CRUDUsingEF
@@ -9,6 +10,8 @@ namespace _4_CRUDUsingEF
         {
             // filters.Add(new HandleErrorAttribute());
             // filters.Add(new AuthorizeAttribute()); // global level
+
+            filters.Add(new CustomActionFilterAttribute());
         }
     }
 }

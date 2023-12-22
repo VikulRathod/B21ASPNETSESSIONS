@@ -7,8 +7,9 @@
 
 <h2>All Trainers</h2>
 
-@Html.ActionLink("Create new Trainer", "Create")
-
+@Html.ActionLink("Create new Trainer", "Create") | 
+<input type="button" value="Delete Multiple" class="btn btn-danger" id="deleteMultiple"/>
+<hr />
 @*<ul>
         @foreach (Trainer item in Model)
         {
@@ -17,6 +18,9 @@
     </ul>*@
 <table class="table table-bordered table-striped">
     <tr>
+        <th>
+            <input type="checkbox" id="selectAll" name="selectAll"/> ALL
+        </th>
         <th>Trainer Id</th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -32,6 +36,9 @@
         foreach (Trainer item in Model)
         {
             <tr>
+                <td>
+                    <input type="checkbox" name="TrainerId" value="@item.Id"/>
+                </td>
                 <td>@item.Id</td>
                 @*<td>@item.Name</td>*@
                 <td>
@@ -59,3 +66,22 @@
         </tr>
     }
 </table>
+
+<script>
+
+    $(function () {
+        $('[name="selectAll"]').click(function () {
+            var status = $(this).prop('checked');
+
+            $('[name="TrainerId"]').prop('checked', status);
+        });
+
+        $('#deleteMultiple').click(function () {
+            var count =
+                $('[name="TrainerId"]:checked').length;
+
+            return confirm(count + ' trainers selected for deletion');
+        });
+    });
+
+</script>

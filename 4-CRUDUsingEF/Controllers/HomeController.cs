@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _4_CRUDUsingEF.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,11 +13,12 @@ namespace _4_CRUDUsingEF.Controllers
         // [RequireHttps]
         // [OutputCache(Duration = 30)]
         // [OutputCache(CacheProfile = "5MinutesCache")]
-        [HandleError]
+        // [HandleError]
+        // [CustomHandleErrorAttribute]
         public ActionResult Index()
         {
-            int a = 10, b = 0;
-            int c = a / b;
+            //int a = 10, b = 0;
+            //int c = a / b;
 
             ViewBag.LoadedTime = DateTime.Now.ToString();
 

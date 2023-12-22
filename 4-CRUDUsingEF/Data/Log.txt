@@ -1,0 +1,49 @@
+********************************************
+OnActionExecuting : Home Index at 12/22/2023 9:36:15 AM
+********************************************
+OnActionExecuted : Home Index at 12/22/2023 9:36:15 AM
+********************************************
+OnResultExecuting : Home Index at 12/22/2023 9:36:15 AM
+********************************************
+OnResultExecuted : Home Index at 12/22/2023 9:36:37 AM
+********************************************
+OnActionExecuting : Trainer Index at 12/22/2023 9:36:43 AM
+********************************************
+OnActionExecuted : Trainer Index at 12/22/2023 9:36:57 AM
+********************************************
+OnResultExecuting : Trainer Index at 12/22/2023 9:36:57 AM
+********************************************
+OnResultExecuted : Trainer Index at 12/22/2023 9:37:05 AM
+********************************************
+OnActionExecuting : Trainer Index at 12/22/2023 9:41:58 AM
+********************************************
+OnActionExecuted : Trainer Index at 12/22/2023 9:42:22 AM
+********************************************
+OnResultExecuting : Trainer Index at 12/22/2023 9:42:22 AM
+********************************************
+OnResultExecuted : Trainer Index at 12/22/2023 9:42:44 AM
+********************************************
+OnActionExecuting : Trainer Index at 12/22/2023 9:44:47 AM
+********************************************
+OnActionExecuted : Trainer Index at 12/22/2023 9:44:47 AM
+********************************************
+OnResultExecuting : Trainer Index at 12/22/2023 9:44:47 AM
+********************************************
+OnResultExecuted : Trainer Index at 12/22/2023 9:44:55 AM
+********************************************
+OnActionExecuting : Trainer Index at 12/22/2023 9:47:47 AM
+********************************************
+OnActionExecuted : Trainer Index at 12/22/2023 9:47:47 AM
+********************************************
+OnResultExecuting : Trainer Index at 12/22/2023 9:47:47 AM
+********************************************
+OnResultExecuted : Trainer Index at 12/22/2023 9:47:55 AM
+********************************************
+OnActionExecuting : Trainer Index at 12/22/2023 9:51:44 AM
+********************************************
+OnActionExecuted : Trainer Index at 12/22/2023 9:51:45 AM
+********************************************
+OnResultExecuting : Trainer Index at 12/22/2023 9:51:45 AM
+********************************************
+OnResultExecuted : Trainer Index at 12/22/2023 9:51:51 AM
+********************************************
