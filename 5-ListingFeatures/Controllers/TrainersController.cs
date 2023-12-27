@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _5_ListingFeatures.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace _5_ListingFeatures.Controllers
 {
@@ -15,18 +17,70 @@ namespace _5_ListingFeatures.Controllers
         private StudentDbContext db = new StudentDbContext();
 
         // GET: Trainers
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, string sort, int? page)
         {
+            ViewBag.NameSort = string.IsNullOrEmpty(sort) ? "Name desc" : "Name";
+            ViewBag.ExperienceSort = sort == "Experience" ? "Experience desc" : "Experience";
+
+            IEnumerable<Trainer> trainers = new List<Trainer>();
+
             if (string.IsNullOrEmpty(search))
             {
-                return View(db.Trainers.ToList());
+                switch (sort)
+                {
+                    case "Name desc":
+                        trainers = db.Trainers.ToList().OrderByDescending(s => s.Name);
+                        break;
+                    case "Experience":
+                        trainers = db.Trainers.ToList().OrderBy(t => t.Experience);
+                        break;
+                    case "Experience desc":
+                        trainers = db.Trainers.ToList().OrderByDescending(t => t.Experience);
+                        break;
+                    default:
+                        trainers = db.Trainers.ToList().OrderBy(s => s.Name);
+                        break;
+                }
+
+                return View(trainers.ToPagedList(page ?? 1, 5));
             }
             else
             {
-                var trainers = db.Trainers.ToList()
-                    .Where(t => t.Name.Contains(search));
-                return View(trainers);
+                //var trainers = db.Trainers.ToList()
+                //    .Where(t => IsSearchedMatch(t, search));
+
+                switch (sort)
+                {
+                    case "Name desc":
+                        trainers = db.Trainers.ToList()
+                    .Where(t => IsSearchedMatch(t, search)).OrderByDescending(s => s.Name);
+                        break;
+                    case "Experience":
+                        trainers = db.Trainers.ToList()
+                    .Where(t => IsSearchedMatch(t, search)).OrderBy(t => t.Experience);
+                        break;
+                    case "Experience desc":
+                        trainers = db.Trainers.ToList()
+                    .Where(t => IsSearchedMatch(t, search)).OrderByDescending(t => t.Experience);
+                        break;
+                    default:
+                        trainers = db.Trainers.ToList()
+                    .Where(t => IsSearchedMatch(t, search)).OrderBy(s => s.Name);
+                        break;
+                }
+
+                return View(trainers.ToPagedList(page ?? 1, 5));
             }
+        }
+
+        private bool IsSearchedMatch(Trainer t, string search)
+        {
+            bool n1 = t.Name.Contains(search);
+            bool c1 = (t.City != null) ? t.City.Contains(search) : false;
+            bool e1 = t.Experience.ToString() == search;
+            bool e2 = (t.Email != null) ? t.Email.Contains(search) : false;
+
+            return n1 || c1 || e1 || e2;
         }
 
         // GET: Trainers/Details/5

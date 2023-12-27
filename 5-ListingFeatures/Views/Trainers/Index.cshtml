@@ -1,8 +1,13 @@
-﻿@model IEnumerable<_5_ListingFeatures.Models.Trainer>
+﻿@model IPagedList<_5_ListingFeatures.Models.Trainer>
+
+@using PagedList
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Index";
 }
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
 
 <h2>Index</h2>
 
@@ -30,19 +35,23 @@
                 <input type="checkbox" name="selectAll" /> All
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                @Html.ActionLink("Name", "Index",
+               new { search = Request["search"], sort = ViewBag.NameSort })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Experience)
+                @*@Html.DisplayNameFor(model => model.Experience)*@
+                @Html.ActionLink("Experience", "Index",
+             new { search = Request["search"], sort = ViewBag.ExperienceSort })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().City)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)
             </th>
             <th></th>
         </tr>
@@ -77,6 +86,15 @@
         }
 
     </table>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { search = Request["search"], sort = Request["sort"], page = page })
+, new PagedListRenderOptions()
+    {
+        Display = PagedListDisplayMode.IfNeeded,
+        DisplayItemSliceAndTotal = true
+    })
+
 }
 <script>
 
