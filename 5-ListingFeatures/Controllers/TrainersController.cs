@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,7 +20,24 @@ namespace _5_ListingFeatures.Controllers
         // GET: Trainers
         public ActionResult Index(string search, string sort, int? page)
         {
-            ViewBag.NameSort = string.IsNullOrEmpty(sort) ? "Name desc" : "Name";
+            //SqlConnection con = new SqlConnection();
+            //SqlTransaction transaction = con.BeginTransaction();
+
+            //try
+            //{
+            //    //
+            //    //
+            //    transaction.Commit();
+            //}
+            //catch
+            //{
+            //    // 
+            //    transaction.Rollback();
+            //}
+
+
+            ViewBag.NameSort = (string.IsNullOrEmpty(sort) ||
+                sort != "Name") ? "Name" : "Name desc";
             ViewBag.ExperienceSort = sort == "Experience" ? "Experience desc" : "Experience";
 
             IEnumerable<Trainer> trainers = new List<Trainer>();
@@ -28,6 +46,9 @@ namespace _5_ListingFeatures.Controllers
             {
                 switch (sort)
                 {
+                    case "Name":
+                        trainers = db.Trainers.ToList().OrderBy(s => s.Name);
+                        break;
                     case "Name desc":
                         trainers = db.Trainers.ToList().OrderByDescending(s => s.Name);
                         break;
@@ -71,6 +92,11 @@ namespace _5_ListingFeatures.Controllers
 
                 return View(trainers.ToPagedList(page ?? 1, 5));
             }
+        }
+
+        public PartialViewResult TrainersList()
+        {
+            return PartialView("_TrainersList", db.Trainers.ToList().ToPagedList(1, 5));
         }
 
         private bool IsSearchedMatch(Trainer t, string search)

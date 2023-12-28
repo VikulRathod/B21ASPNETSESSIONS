@@ -25,6 +25,10 @@ namespace _5_ListingFeatures
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/myJavascripts")
+                .Include("~/Scripts/JavaScript1.js", "~/Scripts/JavaScript2.js", 
+                "~/Scripts/JavaScript3.js"));
         }
     }
 }

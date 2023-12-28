@@ -7,6 +7,14 @@
     ViewBag.Title = "Index";
 }
 
+@*<script src="~/Scripts/JavaScript1.js"></script>
+    <script src="~/Scripts/JavaScript2.js"></script>
+    <script src="~/Scripts/JavaScript3.js"></script>*@
+
+@*@Scripts.Render("~/bundles/myJavascripts")*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
 <link href="~/Content/PagedList.css" rel="stylesheet" />
 
 <h2>Index</h2>
@@ -23,79 +31,22 @@
     }
 </div>
 
-@using (Html.BeginForm("DeleteMultiple", "Trainers", FormMethod.Post))
-{
-    <div>
-        <input type="submit" value="Delete Selected" class="btn btn-danger"
-               onclick="return deleteMultiple()" />
-    </div>
-    <table class="table">
-        <tr>
-            <th>
-                <input type="checkbox" name="selectAll" /> All
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Name)*@
-                @Html.ActionLink("Name", "Index",
-               new { search = Request["search"], sort = ViewBag.NameSort })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Experience)*@
-                @Html.ActionLink("Experience", "Index",
-             new { search = Request["search"], sort = ViewBag.ExperienceSort })
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)
-            </th>
-            <th></th>
-        </tr>
+@*@Html.Action("TrainersList")*@
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <input type="checkbox" name="TrainerToDelete" value="@item.Id" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Experience)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfBirth)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
-
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { search = Request["search"], sort = Request["sort"], page = page })
-, new PagedListRenderOptions()
+@*<input type="button" value="Load Trainers" class="btn btn-primary" id="loadTrainers" />*@
+@Ajax.ActionLink("Load Trainers", "TrainersList", null,
+    new AjaxOptions()
     {
-        Display = PagedListDisplayMode.IfNeeded,
-        DisplayItemSliceAndTotal = true
-    })
+        HttpMethod = "get",
+        UpdateTargetId = "trainers",
+        InsertionMode = InsertionMode.Replace
+    }, new { @class = "btn btn-primary" })
 
-}
+<br />
+
+<div id="trainers"></div>
+
+
 <script>
 
     $(function () {
@@ -117,6 +68,19 @@
                 $('[name="selectAll"]').prop('checked', false);
             }
         });
+
+        //$('#loadTrainers').click(function () {
+        //    $.ajax({
+        //        url: 'trainers/TrainersList',
+        //        type: 'get',
+        //        success: function (response) {
+        //            $('#trainers').html(response);
+        //        },
+        //        error: function (reason) {
+        //            $('#trainers').html(reason);
+        //        }
+        //    });
+        //});
     });
 
     function deleteMultiple() {
