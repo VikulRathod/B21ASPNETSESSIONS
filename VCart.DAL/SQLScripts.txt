@@ -1,0 +1,29 @@
+﻿create database B21AuthenticationDB
+go
+use B21AuthenticationDB
+go
+create table Roles
+(
+RoleId int primary key identity,
+RoleName varchar(50)
+)
+go
+insert into Roles values 
+('Admin'), ('Merchant'),('Delivery Agent'), ('User')
+go
+create table Users
+(
+UserId int primary key identity,
+Name varchar(50),
+Email varchar(100),
+Password varchar(20),
+DateOfBirth date,
+RoleId int foreign key references Roles(RoleId)
+)
+go
+insert into Users values ('admin', 'admin@gmail.com', 'admin', '01/15/2000', 1)
+insert into Users values ('user', 'user@gmail.com', 'user', '05/27/2002', 4)
+go
+select * from Roles
+select * from Users
+
