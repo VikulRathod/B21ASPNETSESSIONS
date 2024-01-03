@@ -10,5 +10,9 @@ namespace VCart.BLL.Interfaces
     public interface IUserBL
     {
         List<User> AllUsers();
+
+        bool CreateUser(User user);
+
+        User AuthenticateUser(string email, string password);
     }
 }

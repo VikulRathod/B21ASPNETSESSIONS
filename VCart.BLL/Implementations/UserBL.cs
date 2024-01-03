@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VCart.BLL.Interfaces;
 using VCart.Models;
 using VCart.Repositories.Interfaces;
+using dal = VCart.DAL.Entities;
 
 namespace VCart.BLL.Implementations
 {
@@ -31,6 +32,41 @@ namespace VCart.BLL.Implementations
                 Password = u.Password,
                 RoleId = u.RoleId
             }).ToList();
+        }
+
+        public bool CreateUser(User user)
+        {
+            dal.User u = new dal.User()
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                DateOfBirth = user.DateOfBirth,
+                RoleId = 4
+            };
+
+            return _userRepo.InsertUser(u);
+        }
+
+        public User AuthenticateUser(string email, string password)
+        {
+            var user = _userRepo.AuthenticateUser(email, password);
+
+            if (user != null)
+            {
+                User dbUser = new User()
+                {
+                    UserId = user.UserId,
+                    Name = user.Name,
+                    Email = user.Email,
+                    Password = user.Password,
+                    DateOfBirth = user.DateOfBirth,
+                    RoleId = user.RoleId
+                };
+
+                return dbUser;
+            }
+            return null;
         }
     }
 }

@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCart.Repositories", "VCart
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCart.Models", "VCart.Models\VCart.Models.csproj", "{4DAF2E99-EEA7-4D39-A450-713AA480ED2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCart.Web", "VCart.Web\VCart.Web.csproj", "{91882B27-C713-439F-8212-5C07191A5B9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,10 @@ Global
 		{4DAF2E99-EEA7-4D39-A450-713AA480ED2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DAF2E99-EEA7-4D39-A450-713AA480ED2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DAF2E99-EEA7-4D39-A450-713AA480ED2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91882B27-C713-439F-8212-5C07191A5B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91882B27-C713-439F-8212-5C07191A5B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91882B27-C713-439F-8212-5C07191A5B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91882B27-C713-439F-8212-5C07191A5B9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -225,6 +231,7 @@ Global
 		{44CE1AB1-1C0D-42AE-BB66-4A9D8D5ED47F} = {89040A90-8823-4D78-A8A6-195FB7D686C1}
 		{C8AAFDDC-08BC-4549-A345-812C4EFEE314} = {89040A90-8823-4D78-A8A6-195FB7D686C1}
 		{4DAF2E99-EEA7-4D39-A450-713AA480ED2E} = {89040A90-8823-4D78-A8A6-195FB7D686C1}
+		{91882B27-C713-439F-8212-5C07191A5B9B} = {89040A90-8823-4D78-A8A6-195FB7D686C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {893BDE5D-5879-4C70-94A6-E4760E849CC9}

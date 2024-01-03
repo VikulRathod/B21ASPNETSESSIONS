@@ -37,7 +37,7 @@ namespace VCart.Repositories.Implementations
             throw new NotImplementedException();
         }
 
-        public Role UserById(int id)
+        public Role RoleById(int id)
         {
             throw new NotImplementedException();
         }

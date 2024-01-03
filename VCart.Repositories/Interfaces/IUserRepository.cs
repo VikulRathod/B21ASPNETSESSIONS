@@ -9,6 +9,8 @@ namespace VCart.Repositories.Interfaces
 {
     public interface IUserRepository
     {
+        User AuthenticateUser(string email, string password);
+
         List<User> AllUsers();
 
         User UserById(int id);

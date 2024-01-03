@@ -11,7 +11,7 @@ namespace VCart.Repositories.Interfaces
     {
         List<Role> AllRoles();
 
-        Role UserById(int id);
+        Role RoleById(int id);
 
         bool InsertRole(Role role);
 

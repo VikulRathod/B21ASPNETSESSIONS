@@ -29,7 +29,16 @@ namespace VCart.Repositories.Implementations
 
         public bool InsertUser(User user)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _db.Users.Add(user);
+                _db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool Updateuser(User user)
@@ -41,6 +50,21 @@ namespace VCart.Repositories.Implementations
         {
             User user = _db.Users.Find(id);
             return user;
+        }
+
+        public User AuthenticateUser(string email, string password)
+        {
+            try
+            {
+                User user = _db.Users.FirstOrDefault(u =>
+                u.Email.Equals(email) && u.Password.Equals(password));
+
+                return user;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
