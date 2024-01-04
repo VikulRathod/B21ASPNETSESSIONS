@@ -56,7 +56,7 @@ namespace VCart.Repositories.Implementations
         {
             try
             {
-                User user = _db.Users.FirstOrDefault(u =>
+                User user = _db.Users.Include("Role").FirstOrDefault(u =>
                 u.Email.Equals(email) && u.Password.Equals(password));
 
                 return user;

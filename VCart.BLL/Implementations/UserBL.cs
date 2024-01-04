@@ -61,7 +61,9 @@ namespace VCart.BLL.Implementations
                     Email = user.Email,
                     Password = user.Password,
                     DateOfBirth = user.DateOfBirth,
-                    RoleId = user.RoleId
+                    RoleId = user.RoleId,
+                    Role = new Role() 
+                    { RoleId = user.Role?.RoleId ?? 0, RoleName = user.Role?.RoleName }
                 };
 
                 return dbUser;

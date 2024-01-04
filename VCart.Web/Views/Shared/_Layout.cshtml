@@ -20,11 +20,29 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Manage Users", "Index", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
-                <ul class="navbar-nav float-end">
-                    <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+
+                @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav float-end">
+                        <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav float-end">
+                        <li class="me-2 p-2">
+                            <span class="text-white">Welcome, 
+                            @HttpContext.Current.User.Identity.Name
+                            
+                            - @HttpContext.Current.User.IsInRole("Admin")
+                            </span>
+                        </li>
+                        <li>@Html.ActionLink("Log Out", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
             </div>
         </div>
     </nav>

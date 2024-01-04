@@ -14,5 +14,7 @@ namespace VCart.Models
         public string Password { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public Nullable<int> RoleId { get; set; }
+
+        public Role Role { get; set; }
     }
 }

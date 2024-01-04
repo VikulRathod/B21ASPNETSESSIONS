@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using VCart.BLL.Interfaces;
 using VCart.Models;
 
@@ -49,13 +50,23 @@ namespace VCart.Web.Controllers
         {
             var user = _bl.AuthenticateUser(Email, Password);
 
-            if(user != null)
+            if (user != null)
             {
-               return RedirectToAction("Index", "Home");
+                FormsAuthentication.SetAuthCookie(user.Email, false);
+                
+                return RedirectToAction("Index", "Home");
             }
 
-            ModelState.AddModelError("", "User does not exists");
+            ModelState.AddModelError("Email", "User does not exists");
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Login");
         }
     }
 }
