@@ -26,4 +26,16 @@ insert into Users values ('user', 'user@gmail.com', 'user', '05/27/2002', 4)
 go
 select * from Roles
 select * from Users
+go
 
+create table Product
+(
+Id int primary key identity,
+Name varchar(50),
+Price int,
+Image varchar(200),
+AddedDate datetime
+)
+
+go
+select * from Product

@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\ProductBL.cs" />
+    <Compile Include="Implementations\RoleBL.cs" />
     <Compile Include="Implementations\UserBL.cs" />
+    <Compile Include="Interfaces\IProductBL.cs" />
+    <Compile Include="Interfaces\IRoleBL.cs" />
     <Compile Include="Interfaces\IUserBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

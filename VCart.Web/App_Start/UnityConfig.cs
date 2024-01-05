@@ -1,10 +1,11 @@
 using System;
-
+using System.Web.Security;
 using Unity;
 using VCart.BLL.Implementations;
 using VCart.BLL.Interfaces;
 using VCart.Repositories.Implementations;
 using VCart.Repositories.Interfaces;
+using VCart.Web.App_Start;
 
 namespace VCart.Web
 {
@@ -50,6 +51,10 @@ namespace VCart.Web
             container.RegisterType<IUserRepository, UserRepository>();
             container.RegisterType<IRoleRepository, RoleRepository>();
             container.RegisterType<IUserBL, UserBL>();
+            container.RegisterType<IRoleBL, RoleBL>();
+            container.RegisterType<RoleProvider, UserRoleProvider>();
+            container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IProductBL, ProductBL>();
         }
     }
 }

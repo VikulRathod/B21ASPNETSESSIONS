@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="B21AuthenticationDBModel.Role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="B21AuthenticationDBModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="B21AuthenticationDBModel.FK__Users__RoleId__4F7CD00D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="B21AuthenticationDBModel.Product" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
