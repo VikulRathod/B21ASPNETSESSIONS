@@ -20,11 +20,11 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    @*@if (HttpContext.Current.User.IsInRole("Admin"))
-                    {*@
+                    @if (HttpContext.Current.User.IsInRole("Admin"))
+                    {
                         <li>@Html.ActionLink("Manage Users", "Index", "Users", new { area = "" }, new { @class = "nav-link" })</li>
-                    @*}*@
-                     <li>@Html.ActionLink("Products", "Index", "Products", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    <li>@Html.ActionLink("Products", "Index", "Products", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
 
                 @if (!HttpContext.Current.User.Identity.IsAuthenticated)

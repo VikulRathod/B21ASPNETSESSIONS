@@ -7,7 +7,7 @@ using VCart.BLL.Interfaces;
 
 namespace VCart.Web.Controllers
 {
-    [Authorize(Roles = "Admin, Merchant")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         IUserBL _bl = null;

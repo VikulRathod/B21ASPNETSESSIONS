@@ -52,7 +52,7 @@ namespace VCart.Web
             container.RegisterType<IRoleRepository, RoleRepository>();
             container.RegisterType<IUserBL, UserBL>();
             container.RegisterType<IRoleBL, RoleBL>();
-            container.RegisterType<RoleProvider, UserRoleProvider>();
+            //container.RegisterType<RoleProvider, UserRoleProvider>();
             container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IProductBL, ProductBL>();
         }

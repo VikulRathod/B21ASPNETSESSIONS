@@ -12,27 +12,23 @@ namespace VCart.Web.App_Start
 {
     public class UserRoleProvider : RoleProvider
     {
-        IRoleBL _roleBL = null;
-        IUserBL _userBL = null;
+        UserBL _userBL = new UserBL(new UserRepository(new DAL.Entities.ProductDbContext()));
+        RoleBL _roleBL = new RoleBL(new RoleRepository(new DAL.Entities.ProductDbContext()));
 
-        public UserRoleProvider(IRoleBL roleBL, IUserBL userBL)
-        {
-            _roleBL = roleBL;
-            _userBL = userBL;
-        }
+        //IRoleBL _roleBL = null;
+        //IUserBL _userBL = null;
 
-        private string _connectionString = "ProductDbContext";
+        //public UserRoleProvider(IRoleBL roleBL, IUserBL userBL)
+        //{
+        //    _roleBL = roleBL;
+        //    _userBL = userBL;
+        //}
+
+        // private string _connectionString = "ProductDbContext";
 
         public override string ApplicationName
         {
-            get
-            {
-                return _connectionString;
-            }
-            set
-            {
-                _connectionString = value;
-            }
+            get;set;
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -73,6 +69,8 @@ namespace VCart.Web.App_Start
 
         public override string[] GetUsersInRole(string roleName)
         {
+            
+
             var userRoles = from u in _userBL.AllUsers()
                             join r in _roleBL.GetRoles()
                             on u.RoleId equals r.RoleId

@@ -25,17 +25,22 @@ namespace VCart.Web.Controllers
             return View(products);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Product product, HttpPostedFileBase ImageFile)
         {
-            if(ImageFile != null)
+            if (ImageFile != null)
             {
+                //string extension = ImageFile.FileName.Split('.')[1];
+                //var size = ImageFile.ContentLength;
+
                 string path = Server.MapPath("~/Images/" + ImageFile.FileName);
                 ImageFile.SaveAs(path);
 
