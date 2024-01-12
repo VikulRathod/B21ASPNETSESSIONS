@@ -1,0 +1,40 @@
+﻿using _3_APIMvcClient.Models
+
+@model IEnumerable<_3_APIMvcClient.Models.Product>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Available Products</h2>
+
+<table>
+
+    @if (Model != null && Model.Count() > 0)
+    {
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Image</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="3">
+                No Products Found
+            </td>
+        </tr>
+    }
+
+</table>

@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace _2_Routing.Controllers
 {
+    
     public class ProductController : ApiController
     {
         ProductDbContext _db = new ProductDbContext();
@@ -27,6 +28,7 @@ namespace _2_Routing.Controllers
         //}
 
         [HttpGet]
+        // get http://localhost:44344/api/product
         public IHttpActionResult GetAllProducts()
         {
             var products = _db.Products.ToList();
