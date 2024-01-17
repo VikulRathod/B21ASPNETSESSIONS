@@ -15,6 +15,8 @@ namespace _2_Routing
             // enable cors
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
+            config.MessageHandlers.Add(new TokenValidationHandler());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

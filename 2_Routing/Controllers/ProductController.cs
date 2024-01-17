@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace _2_Routing.Controllers
 {
-    
+    [Authorize]
     public class ProductController : ApiController
     {
         ProductDbContext _db = new ProductDbContext();
